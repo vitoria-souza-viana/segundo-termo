@@ -97,7 +97,8 @@ INSERT INTO produto (nome, preco, ativo, id_categoria) VALUES
 ('Cookie de Chocolate', 7.50, TRUE, 3), ('Pão de Queijo', 6.50, TRUE, 4),
 ('Croissant', 12.00, TRUE, 4), ('Sanduíche Natural', 16.00, TRUE, 4),
 ('Combo Café + Pão de Queijo', 12.50, TRUE, 5),
-('Combo Cappuccino + Brownie', 20.00, TRUE, 5), ('Torta Especial', 22.00, FALSE, 3);
+('Combo Cappuccino + Brownie', 20.00, TRUE, 5),
+('Torta Especial', 22.00, FALSE, 3);
 
 INSERT INTO pedido (data_pedido, status, valor_total, id_cliente) VALUES
 ('2026-09-01 08:15:00', 'FINALIZADO', 16.00, 1),
