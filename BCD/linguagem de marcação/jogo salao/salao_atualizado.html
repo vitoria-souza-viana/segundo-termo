@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salão de Beleza Realista - Edição Master Deluxe</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #faf5f8 0%, #e8daf0 50%, #d5c2d1 100%);
+            color: #3d2f38;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #4a283d;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #7d6273;
+            font-size: 14px;
+        }
+
+        .game-container {
+            display: flex;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(74, 40, 61, 0.15);
+            max-width: 1050px;
+            width: 100%;
+            gap: 30px;
+        }
+
+        /* ÁREA DE VISUALIZAÇÃO ULTRA REALISTA */
+        .preview-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #ffffff 0%, #fef6fa 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(225, 209, 217, 0.6);
+            min-height: 580px;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.01);
+        }
+
+        /* Moldura de Espelho de Camarim */
+        .preview-area::before {
+            content: '';
+            position: absolute;
+            width: 88%;
+            height: 94%;
+            border-radius: 100px 100px 24px 24px;
+            border: 8px solid #f0e2ea;
+            background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(253,240,247,0.4) 100%);
+            z-index: 0;
+            box-shadow: 0 10px 30px rgba(74, 40, 61, 0.03);
+        }
+
+        .character-container {
+            position: relative;
+            width: 250px;
+            height: 520px;
+            z-index: 1;
+        }
+
+        /* Cabelo Base Traseiro */
+        .hair-back {
+            position: absolute;
+            top: 25px;
+            left: 35px;
+            width: 180px;
+            height: 270px;
+            background: linear-gradient(180deg, #ffd93d 0%, #e6b800 100%);
+            border-radius: 90px 90px 45px 45px;
+            z-index: 1;
+            box-shadow: inset 0 -50px 35px rgba(0,0,0,0.25), 0 10px 25px rgba(0,0,0,0.15);
+            transition: background 0.4s ease;
+        }
+
+        /* Corpo Anatômico com Sombreamento HD */
+        .neck {
+            position: absolute;
+            top: 108px;
+            left: 112px;
+            width: 26px;
+            height: 45px;
+            background: linear-gradient(to bottom, #ffeedb 0%, #ffdbac 100%);
+            z-index: 2;
+            box-shadow: inset 0 12px 10px rgba(0,0,0,0.06);
+        }
+
+        .shoulders {
+            position: absolute;
+            top: 143px;
+            left: 55px;
+            width: 140px;
+            height: 65px;
+            background: linear-gradient(180deg, #ffdbac 0%, #f1c28d 100%);
+            border-radius: 45px 45px 0 0;
+            z-index: 2;
+            box-shadow: inset 0 15px 15px rgba(255,255,255,0.2);
+        }
+
+        /* Pernas com Curvatura e Sombra de Linha Central */
+        .legs-container {
+            position: absolute;
+            top: 310px;
+            left: 85px;
+            width: 80px;
+            height: 195px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 2;
+        }
+
+        .leg {
+            width: 28px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ffdbac 0%, #eebd84 80%, #2b1824 82%, #4a283d 100%);
+            border-radius: 0 0 14px 10px;
+            box-shadow: inset -4px 0 6px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.06);
+        }
+
+        /* Roupas Realistas de Alta Definição */
+        .clothes-layer {
+            position: absolute;
+            top: 158px;
+            left: 60px;
+            width: 130px;
+            height: 185px;
+            background: linear-gradient(135deg, #ff4081 0%, #ff0055 35%, #b30036 70%, #7a0022 100%);
+            border-radius: 14px 14px 25px 25px;
+            z-index: 3;
+            box-shadow: 0 14px 28px rgba(194, 24, 91, 0.4), 
+                        inset 20px 0 25px rgba(255,255,255,0.2), 
+                        inset -20px -25px 30px rgba(0,0,0,0.25);
+            transition: background 0.4s ease, border-radius 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* Acessório Fino */
+        .necklace {
+            position: absolute;
+            top: 150px;
+            left: 92px;
+            width: 66px;
+            height: 22px;
+            border-bottom: 5px dotted #fff;
+            border-radius: 50%;
+            z-index: 4;
+            opacity: 0.85;
+        }
+
+        /* Cabeça Ajustada para reduzir a testa */
+        .head-base {
+            position: absolute;
+            top: 35px;
+            left: 80px;
+            width: 90px;
+            height: 105px;
+            background: radial-gradient(circle at 50% 30%, #fff5eb 0%, #ffdbac 100%);
+            border-radius: 45px 45px 50px 50px;
+            z-index: 4;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        /* CABELO FRONTAL CORRETIVO (Molda o topo e reduz a testa sem cobrir os olhos) */
+        .hair-front-frame {
+            position: absolute;
+            top: 25px;
+            left: 72px;
+            width: 106px;
+            height: 60px;
+            background: linear-gradient(135deg, #ffd93d 0%, #e6b800 100%);
+            border-radius: 45px 45px 0px 40px; /* Curva perfeita que desce cobrindo a lateral da testa */
+            z-index: 5;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 3px 5px rgba(255,255,255,0.3);
+            transition: background 0.4s ease;
+        }
+
+        /* Olhos de Boneca Realistas */
+        .eyes-container {
+            display: flex;
+            justify-content: space-between;
+            width: 60px;
+            position: absolute;
+            top: 48px;
+            left: 15px;
+        }
+
+        .eye {
+            width: 18px;
+            height: 11px;
+            background: #fff;
+            border-radius: 50%;
+            position: relative;
+            border-top: 2.5px solid #2d1e18;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.15);
+        }
+
+        .iris {
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #5c9cff 0%, #2b6cb0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pupil {
+            width: 5px;
+            height: 5px;
+            background: #111;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .pupil::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 1px;
+            width: 2.5px;
+            height: 2.5px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .eyebrows {
+            position: absolute;
+            top: 39px;
+            left: 14px;
+            width: 62px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .brow {
+            width: 18px;
+            height: 3px;
+            background: #4a283d;
+            border-radius: 50%;
+            transform: rotate(-6deg);
+            opacity: 0.85;
+        }
+        .brow.right { transform: rotate(6deg); }
+
+        .blush {
+            position: absolute;
+            top: 62px;
+            left: 8px;
+            width: 74px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .blush-left, .blush-right {
+            width: 16px;
+            height: 10px;
+            background: rgba(255, 90, 140, 0.28);
+            filter: blur(2.5px);
+            border-radius: 50%;
+        }
+
+        /* Boca com Efeito Lip Volume Gloss */
+        .lips {
+            position: absolute;
+            top: 78px;
+            left: 31px;
+            width: 28px;
+            height: 10px;
+            background: linear-gradient(180deg, #ff66a3 0%, #e6005c 100%);
+            border-radius: 4px 4px 8px 8px;
+            box-shadow: 0 2px 5px rgba(230,0,92,0.35), inset 0 1.5px 2px rgba(255,255,255,0.4);
+            transition: background 0.4s ease;
+        }
+
+        /* Mãos com Posição Natural */
+        .hands-area {
+            position: absolute;
+            top: 245px;
+            left: 28px;
+            width: 194px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 6;
+        }
+
+        .hand {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(180deg, #ffdbac 70%, #f1c28d 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 5px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+        }
+
+        .nail {
+            width: 8px;
+            height: 14px;
+            background: linear-gradient(180deg, #ffccd5 0%, #ff99c8 100%);
+            border-radius: 5px 5px 2px 2px;
+            box-shadow: inset 0 3px 2px rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);
+            transition: background 0.4s ease;
+        }
+
+
+        /* PAINEL DE CONTROLES MULTI-OPÇÕES */
+        .controls-area {
+            flex: 1.1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e8daf0;
+            gap: 2px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #7d6273;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            color: #4a283d;
+            border-bottom: 3px solid #4a283d;
+            margin-bottom: -2px;
+        }
+
+        .panel {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .panel.active {
+            display: flex;
+        }
+
+        /* Grid Ampliado com Mais Espaço */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        /* Customização da barra de rolagem interna do grid */
+        .options-grid::-webkit-scrollbar {
+            width: 5px;
+        }
+        .options-grid::-webkit-scrollbar-thumb {
+            background: #e8daf0;
+            border-radius: 10px;
+        }
+
+        .option-btn {
+            border: 1px solid #ebdbe3;
+            border-radius: 12px;
+            height: 52px;
+            cursor: pointer;
+            background: white;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4a283d;
+            display: flex;
+            align-items: center;
+            padding-left: 12px;
+            gap: 10px;
+            transition: all 0.25s ease;
+        }
+
+        .color-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+        }
+
+        .option-btn:hover {
+            border-color: #4a283d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(74, 40, 61, 0.08);
+        }
+
+        .option-btn.selected {
+            border-color: #4a283d;
+            background: #faf5f8;
+            box-shadow: inset 0 0 0 1px #4a283d;
+        }
+
+        h3 {
+            color: #5c3b50;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Salão Realista: Master Salon</h1>
+        <p>Estilize com o mais alto nível de texturas e paletas estendidas</p>
+    </header>
+
+    <div class="game-container">
+        <!-- Tela da Modelo Reformulada -->
+        <div class="preview-area">
+            <div class="character-container">
+                <div class="hair-back" id="hair-b"></div>
+                <div class="neck"></div>
+                <div class="shoulders"></div>
+                <div class="legs-container">
+                    <div class="leg"></div>
+                    <div class="leg"></div>
+                </div>
+                <div class="clothes-layer" id="clothes"></div>
+                <div class="necklace"></div>
+                
+                <div class="head-base">
+                    <div class="eyebrows">
+                        <div class="brow"></div>
+                        <div class="brow right"></div>
+                    </div>
+                    <div class="eyes-container">
+                        <div class="eye"><div class="iris"><div class="pupil"></div></div></div>
+                        <div class="eye"><div class="iris"><div class="pupil"></div></div></div>
+                    </div>
+                    <div class="blush">
+                        <div class="blush-left"></div>
+                        <div class="blush-right"></div>
+                    </div>
+                    <div class="lips" id="lips"></div>
+                </div>
+
+                <!-- Camada que reduz e modela a testa de forma realista -->
+                <div class="hair-front-frame" id="hair-f"></div>
+
+                <div class="hands-area">
+                    <div class="hand">
+                        <div class="nail"></div><div class="nail"></div><div class="nail"></div>
+                    </div>
+                    <div class="hand">
+                        <div class="nail"></div><div class="nail"></div><div class="nail"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel Com Muito Mais Opções -->
+        <div class="controls-area">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('hair-panel')">💇‍♀️ Cabelo</button>
+                <button class="tab-btn" onclick="switchTab('nails-panel')">💅 Unhas</button>
+                <button class="tab-btn" onclick="switchTab('clothes-panel')">👗 Looks</button>
+                <button class="tab-btn" onclick="switchTab('makeup-panel')">💄 Batom</button>
+            </div>
+
+            <!-- Cabelo: 8 Opções de Tons Premium -->
+            <div id="hair-panel" class="panel active">
+                <h3>Menu de Cores de Cabelo:</h3>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="changeHair('linear-gradient(180deg, #ffd93d 0%, #e6b800 100%)', this)">
+                        <div class="color-indicator" style="background: #e6b800;"></div> Loiro Sun-Kissed
+                    </button>
+                    <button class="option-btn" onclick="changeHair('linear-gradient(180deg, #f5f5f5 0%, #cccccc 100%)', this)">
+                        <div class="color-indicator" style="background: #ccc;"></div> Platinado Ice
+                    </button>
+                    <button class="option-btn" onclick="changeHair('linear-gradient(180deg, #8a624a 0%, #4a3728 100%)', this)">
+                        <div class="color-indicator" style="background: #4a3728;"></div> Castanho Mel
+                    </button>
+                    <button class="option-btn" onclick="changeHair('linear-gradient(180deg, #4d3319 0%, #261608 100%)', this)">
+                        <div class="color-indicator" style="background: #261608;"></div> Chocolate Dark
+                    </button>
+                    <button class="option-btn" onclick="changeHair('linear-gradient(180deg, #ff6b4a 0%, #ba3c13 100%)', this)">
+                        <div class="color-indicator" style="background: #ba3c13;"></div> Ruivo Intenso
+                    </button>
+                    <button class="option-btn" onclick="changeHair('linear-gradient(180deg, #434343 0%, #111111 100%)', this)">
+                        <div class="color-indicator" style="background: #111;"></div> Preto Ébano
+                    </button>
+                    <button class="option-btn" onclick="changeHair('linear-gradient(180deg, #ffb3d9 0%, #ff66b3 100%)', this)">
+                        <div class="color-indicator" style="background: #ff66b3;"></div> Rosa Chiclete
+                    </button>
+                    <button class="option-btn" onclick="changeHair('linear-gradient(180deg, #b3f0ff 0%, #33ccff 100%)', this)">
+                        <div class="color-indicator" style="background: #33ccff;"></div> Turquesa Pop
+                    </button>
+                </div>
+            </div>
+
+            <!-- Unhas: 8 Opções Estendidas -->
+            <div id="nails-panel" class="panel">
+                <h3>Esmaltação em Gel:</h3>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="changeNails('linear-gradient(180deg, #ff6666 0%, #cc0000 100%)', this)">
+                        <div class="color-indicator" style="background: #cc0000;"></div> Escarlate Luxury
+                    </button>
+                    <button class="option-btn" onclick="changeNails('linear-gradient(180deg, #cc66ff 0%, #7a00cc 100%)', this)">
+                        <div class="color-indicator" style="background: #7a00cc;"></div> Purple Velvet
+                    </button>
+                    <button class="option-btn" onclick="changeNails('linear-gradient(180deg, #333 0%, #050505 100%)', this)">
+                        <div class="color-indicator" style="background: #050505;"></div> Noir Absolu
+                    </button>
+                    <button class="option-btn" onclick="changeNails('linear-gradient(180deg, #fff3f0 0%, #e0bdba 100%)', this)">
+                        <div class="color-indicator" style="background: #e0bdba;"></div> Nude Minimalista
+                    </button>
+                    <button class="option-btn" onclick="changeNails('linear-gradient(180deg, #fff, #eee 80%, #ff66a3 81%, #ff66a3 100%)', this)">
+                        <div class="color-indicator" style="background: #ff66a3;"></div> Francesinha Pink
+                    </button>
+                    <button class="option-btn" onclick="changeNails('linear-gradient(180deg, #ffd700 0%, #b8860b 100%)', this)">
+                        <div class="color-indicator" style="background: #ffd700;"></div> Ouro Cromado
+                    </button>
+                    <button class="option-btn" onclick="changeNails('linear-gradient(180deg, #99ffff 0%, #00cccc 100%)', this)">
+                        <div class="color-indicator" style="background: #00cccc;"></div> Aquamarine
+                    </button>
+                    <button class="option-btn" onclick="changeNails('linear-gradient(180deg, #ff99ff 0%, #cc00cc 100%)', this)">
+                        <div class="color-indicator" style="background: #cc00cc;"></div> Orquídea Neon
+                    </button>
+                </div>
+            </div>
+
+            <!-- Looks: 7 Opções com Texturas em Alta Definição -->
+            <div id="clothes-panel" class="panel">
+                <h3>Alta Costura & Alfaiataria:</h3>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="changeClothes('linear-gradient(135deg, #ff4081 0%, #ff0055 35%, #b30036 70%, #7a0022 100%)', '14px 14px 25px 25px', '0 14px 28px rgba(194, 24, 91, 0.4), inset 20px 0 25px rgba(255,255,255,0.2), inset -20px -25px 30px rgba(0,0,0,0.25)', this)">👗 Cetim Gala</button>
+                    <button class="option-btn" onclick="changeClothes('linear-gradient(90deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%)', '4px 4px 10px 10px', '0 10px 20px rgba(30,60,114,0.3), inset 0 6px 12px rgba(255,255,255,0.2)', this)">🧥 Real Blazer</button>
+                    <button class="option-btn" onclick="changeClothes('linear-gradient(180deg, #222 0%, #333 40%, #111 50%, #444 85%, #000 100%)', '20px 20px 45px 45px', '0 12px 30px rgba(0,0,0,0.5), inset 0 10px 15px rgba(255,255,255,0.1)', this)">🖤 Couro Plissado</button>
+                    <button class="option-btn" onclick="changeClothes('linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)', '15px 15px 20px 20px', '0 10px 20px rgba(166,193,238,0.3), inset 0 5px 8px rgba(255,255,255,0.4)', this)">✨ Organza de Seda</button>
+                    <button class="option-btn" onclick="changeClothes('linear-gradient(135deg, #ff9933 0%, #ff5050 100%)', '10px 10px 40px 40px', '0 10px 20px rgba(255,80,80,0.3), inset 10px 0 15px rgba(255,255,255,0.2)', this)">🍊 Coral Slip Dress</button>
+                    <button class="option-btn" onclick="changeClothes('linear-gradient(90deg, #0f2027 0%, #203a43 50%, #2c5364 100%)', '0px 0px 30px 30px', '0 10px 20px rgba(32,58,67,0.3), inset 0 4px 10px rgba(255,255,255,0.1)', this)">💎 Imperial Jade</button>
+                    <button class="option-btn" onclick="changeClothes('linear-gradient(180deg, #ffd700 0%, #ffaa00 100%)', '15px 15px 0 0', '0 12px 25px rgba(255,170,0,0.3), inset 15px 0 15px rgba(255,255,255,0.4)', this)">👑 Corset Dourado</button>
+                </div>
+            </div>
+
+            <!-- Batom: 8 Opções Velvet e Matte -->
+            <div id="makeup-panel" class="panel">
+                <h3>Batom Lip Volume:</h3>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="changeLips('linear-gradient(180deg, #ff4d4d 0%, #cc0000 100%)', this)">
+                        <div class="color-indicator" style="background: #cc0000;"></div> Vermelho Velvet
+                    </button>
+                    <button class="option-btn" onclick="changeLips('linear-gradient(180deg, #990033 0%, #4d001a 100%)', this)">
+                        <div class="color-indicator" style="background: #4d001a;"></div> Burgundy Matte
+                    </button>
+                    <button class="option-btn" onclick="changeLips('linear-gradient(180deg, #ffb3cc 0%, #ff4d88 100%)', this)">
+                        <div class="color-indicator" style="background: #ff4d88;"></div> Soft Rose Balm
+                    </button>
+                    <button class="option-btn" onclick="changeLips('linear-gradient(180deg, #d2b48c 0%, #8b5a2b 100%)', this)">
+                        <div class="color-indicator" style="background: #8b5a2b;"></div> Cacau Gloss
+                    </button>
+                    <button class="option-btn" onclick="changeLips('linear-gradient(180deg, #e60073 0%, #99004d 100%)', this)">
+                        <div class="color-indicator" style="background: #e60073;"></div> Fúcsia Intenso
+                    </button>
+                    <button class="option-btn" onclick="changeLips('linear-gradient(180deg, #ffb366 0%, #ff8000 100%)', this)">
+                        <div class="color-indicator" style="background: #ff8000;"></div> Nude Pêssego
+                    </button>
+                    <button class="option-btn" onclick="changeLips('linear-gradient(180deg, #b380ff 0%, #6600cc 100%)', this)">
+                        <div class="color-indicator" style="background: #6600cc;"></div> Cyber Violet
+                    </button>
+                    <button class="option-btn" onclick="changeLips('linear-gradient(180deg, #f0e6ef 0%, #c0b3c4 100%)', this)">
+                        <div class="color-indicator" style="background: #c0b3c4;"></div> Incolor / Natural
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(panelId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            document.getElementById(panelId).classList.add('active');
+        }
+
+        function changeHair(gradientString, button) {
+            document.getElementById('hair-b').style.background = gradientString;
+            document.getElementById('hair-f').style.background = gradientString;
+            clearSelected(button);
+        }
+
+        function changeNails(gradientString, button) {
+            document.querySelectorAll('.nail').forEach(nail => {
+                nail.style.background = gradientString;
+            });
+            clearSelected(button);
+        }
+
+        function changeClothes(backgroundStyle, borderRadius, boxShadow, button) {
+            const clothes = document.getElementById('clothes');
+            clothes.style.background = backgroundStyle;
+            clothes.style.borderRadius = borderRadius;
+            clothes.style.boxShadow = boxShadow;
+            clearSelected(button);
+        }
+
+        function changeLips(gradientString, button) {
+            document.getElementById('lips').style.background = gradientString;
+            clearSelected(button);
+        }
+
+        function clearSelected(selectedButton) {
+            const parentPanel = selectedButton.parentElement;
+            parentPanel.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
+            selectedButton.classList.add('selected');
+        }
+    </script>
+</body>
+</html>
