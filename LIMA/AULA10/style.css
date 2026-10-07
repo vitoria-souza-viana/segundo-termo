@@ -1,0 +1,79 @@
+.flexB { 
+    display:  flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 15px 8%;
+    /* justfy-content: alinhar o texto */
+    /* justify-content: center;
+    justify-content: flex-start;
+    justify-content: flex-end; *
+     justify-content: space-around;
+    justify-content: space-between;
+    /* justify-content: space-evenly; */
+    background-color: rgb(120, 139, 74);
+
+}
+
+.Menu-f{
+    display: flex;
+    gap: 43px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+   
+}
+
+.flex-ban{
+    display: flex;
+    align-items: center;
+    gap: 89px;
+    padding: 60px 8%;
+    background-color: antiquewhite;
+}
+
+.flex-ban-c, .flex-ban-imagem{
+    flex: 1;
+}
+
+.flex-ban-imagem{
+    margin: 0;
+}
+
+.flex-ban-imagem img{
+    width: 100%;
+    display: block;
+}
+
+.flex-cs {
+    display: flex;
+    gap: 23px;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flex-cs > li {
+    flex: 1;
+    min-width: 223px;
+
+}
+
+.flex-con {
+    display: flex;
+    gap: 43px;
+    align-items: flex-start;
+    padding: 60px 8%;
+}
+
+.flex-con-c, .flex-con form {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.flex-ca{
+    display: flex;
+    height: 200px;
+    background-color:rgba(119, 139, 74, 0.541) ;
+    align-items: flex-start;
+}

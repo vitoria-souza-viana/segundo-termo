@@ -1,0 +1,47 @@
+
+/* EXERCICIO 1 E 2 */
+
+.Equipe{
+    justify-content: space-between;
+    display: flex;
+    margin: 0;
+    padding: 30px;
+    background-color: antiquewhite;
+
+}
+
+.Equipe3a{
+    justify-content: flex-start;
+    display: flex;
+    margin: 0;
+    padding: 30px;
+    background-color: antiquewhite;
+
+}
+
+.Equipe3b{
+    justify-content: center;
+    display: flex;
+    margin: 0;
+    padding: 30px;
+    background-color: antiquewhite;
+
+}
+
+.Equipe3c{
+    justify-content: flex-end;
+    display: flex;
+    margin: 0;
+    padding: 30px;
+    background-color: antiquewhite;
+
+}
+
+.Equipe3d{
+    justify-content: space-evenly;
+    display: flex;
+    margin: 0;
+    padding: 30px;
+    background-color: antiquewhite;
+
+}
