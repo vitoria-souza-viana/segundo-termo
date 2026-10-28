@@ -147,7 +147,7 @@ id-nav a{
 }
 
 .id-grid-cart{
-    height: 100%;
+    height: 60%;
     padding: 20px;
     background-color: var(--branco);
     border: 2px solid var(--preto);
