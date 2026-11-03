@@ -1,0 +1,174 @@
+/* ROOT:  ódemos guardar nossas cores e informações gerais em um unico lugar */
+
+:root{
+
+    /* cores */
+    --creme: #f3e6de;
+    --preto:  black;
+    --branco: white; 
+    --vinho:#56070C;
+    --marrom:#350A06;
+
+    /* tipografia */
+    --fonte-principal: 'Times New Roman', serif;
+    --fonte-texto: 'Arial';
+    --fonte-bonita: "Libre Caslon Condensed", serif;
+
+    /* espaçamento */
+
+    --espaco-xs: 4px;
+    --espaco-sm: 8px;
+    --espacp-md:16px;
+    --espaco-lg:24px
+}
+
+/* CONFIGURAÇÕES DE RESET BÁSICO */
+*{
+    /* permite alterar configurações de todo o html */
+ box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+
+body{
+    font-family: var(--fonte-bonita);
+    font-weight: 800;
+    margin: 0;
+    color: var(--preto);
+    background-color: var(--creme);
+    line-height: 1.6;
+}
+
+
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+.id-v{
+    height: 100px;
+    background-color: var(--vinho);
+    color: var(--creme);
+    font-family: var(--fonte-bonita);
+    font-weight: 900
+}
+
+h1,h2,h3{
+    margin-top: 0;
+    color: var(--creme);
+}
+
+h1{
+    font-size: 3rem;
+    line-height: 1.1;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+h3{
+    font-size: 1.25rem;
+}
+
+.id-nav {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 20px;
+    padding: 20px;
+}
+
+id-nav a{
+    color:var(--marrom);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.id-nav a:hover{
+    color: #350A06;
+    background-color:#350A06
+}
+
+/* APLICAÇÃO DE FINCIONALIDADE E ACESSIBILIDADE POR TECLADO */
+ 
+.id-nav a:focus-visible {
+    outline: 10px dashed var(--marrom);
+    outline-offset: 10px;
+}
+
+.id.ban{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 80px 8%;
+    background-color: var(--branco);
+}
+
+
+.id-ban-img{
+    flex: 1;
+}
+
+.id-ban-img img{
+    width: 30%;
+    border-radius: 18px;
+}
+
+.botao-id{
+    display: inline-block;
+    margin-top: 16px ;
+    padding: 12px 24px;
+    background-color: var(--preto);
+    color: var(--creme);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 16px;
+    transition: backgroud-color 0.05 ease;
+}
+
+.botao-id :hover {
+    background-color: var(--vinho);
+}
+
+.id-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.id-grid-cart{
+    height: 60%;
+    padding: 20px;
+    background-color: var(--branco);
+    border: 2px solid var(--preto);
+    border-radius: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2 ease;
+}
+
+
+.id-grid-cart img {
+    width: 60%;
+    aspect-ratio: 4 /3;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px var(--marrom)
+}
+
+.id-grid-cart:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px var(--preto);
+}
+
+
+
+
