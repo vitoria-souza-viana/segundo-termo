@@ -1,0 +1,64 @@
+:root{
+    /* cores */
+    --bordo:#5C1A26;
+    --amarelo: #D99B26;
+    --azul:#2B7BBB;
+    --verde:#3D5A45;
+    --creme:#e6d7bc;
+
+    /* fontes */
+    --grossa: "BBH Bogle", sans-serif;
+}
+
+body{
+    box-sizing: border-box;
+    background-color: antiquewhite;
+}
+
+.inicio{
+    background-color: var(--creme);
+    color: #D99B26;
+    font-family: var(--grossa);
+    height: 80px;
+    align-items: baseline;
+    justify-content: flex-start;
+    display: flex;
+}
+
+.inicio span{
+    color: #5C1A26;
+}
+
+.navegacao {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    gap: 48px;
+    margin: 0;
+    padding: 20px;
+    align-items: baseline;
+    justify-content: flex-start;
+
+}
+
+.navegacao button{
+    background-color: #D99B26;
+    color: var(--verde);
+}
+
+.conteudo-inicial{
+    background-color: var(--bordo);
+    color: var(--amarelo);
+    display: flex;
+    align-items: center;
+}
+.conteudo-art{
+    display: flex;
+    align-items: center;
+}
+
+.inicio-img img{
+    display: flex;
+    width: 50%;
+    align-items: flex-start;
+}
