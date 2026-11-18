@@ -1,0 +1,197 @@
+:root {
+    /* cores */
+    --rosa:#F279A6;
+    --roxo:#6B498C;
+    --verde:#80BF7E;
+    --amarelo:#F2B807;
+    --laranja:#F26835;
+    --azul:#2BACCF;
+    --branco:#FFFFFF;
+    --preto:#000000;
+    --roxomaisclaro:#9354d3;
+
+    /* fontes */
+    --titulo:"Playwrite IT Trad", cursive;
+    --jogo:"Press Start 2P", cursive;
+    --cursiva: "Press Start 2P", cursive;
+
+}
+body{
+    box-sizing: border-box;
+    background-color: antiquewhite;
+}
+
+.inicio{
+      background-image: linear-gradient(135deg, #F26835, #F2B807);
+      display: flex;
+      border-radius: 20px;
+      border: 2px solid var(--azul);
+      height: 80px;
+      align-items: baseline;
+      justify-content: flex-end;
+}
+
+.inicio h1{
+    color: var(--branco);
+    font-family: var(--jogo);
+}
+
+.inicio span{
+    color: var(--amarelo);
+    font-family: var(--cursiva);
+    font-weight: 100;
+}
+
+.inicio a {
+    text-decoration: none;
+    list-style: none;
+}
+
+.navegacao {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    gap: 48px;
+    margin: 0;
+    padding: 30px;
+    align-items: flex-start;
+    align-content: space-between;
+    /* flex-direction: row; deixa em linhas  */
+    /* flex-wrap: wrap; quebra linhas */
+}
+.navegacao a{
+    color: #000000;
+    border-radius: 100px;
+    border: 2px solid var(--rosa);
+}
+
+.navegacao button{
+    background-color: #F279A6;
+    color: #000000;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 100px;
+
+}
+
+.conteudo_inicial{
+    background-color: #F279A6;
+    display: flex;
+    border-radius: 20px;
+    border: 2px solid var(--roxo);
+
+}
+
+.conteudo_art{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+
+}
+img{
+    display: block;
+    width: 130%;
+    /* height: 10%; */
+}
+.cartao-img{
+    transition: all 0.3s ease;
+}
+
+.cartao-img:hover{
+    box-shadow: 0 10px 24px -8px #000000 ;
+    filter: blur(2px);
+    background: var(--amarelo);
+    backdrop-filter: blur(14px);
+    transform: translateX(120px) rotate(180deg);
+    
+
+}
+
+.galeria-conteudo {
+    background-color: var(--verde);
+    padding: 0;
+    margin: 0;
+    border-radius: 20px;
+    border: 2px solid var(--roxo);
+}
+
+.galeria-img {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    grid-column: auto;
+    object-fit: none;
+}
+
+.galeria-img img {
+    display: block;
+    max-width: 100%;
+    height: 50%;
+}
+
+
+.galeria-img li, ul {
+    text-decoration: none;
+    list-style: none;
+}
+
+.gal-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    width: auto;
+}
+
+.gal-img figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 14px;
+    color: #80BF7E;
+    background: #000000;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+
+}
+
+.gal-img:hover figcaption{
+    transform: translateY(0);
+
+}
+
+.cartao-img2{
+    transition: all 0.5s ease;
+}
+
+.cartao-img2:hover{
+    box-shadow: 0 100px 24px -8px #000000 ;
+    filter: blur(2px);
+    background: var(--amarelo);
+    backdrop-filter: blur(14px);
+    transform: translateX(120px) rotate(180deg);
+}
+
+.conteudo_meio{
+    background-color: var(--roxomaisclaro);
+    display: flex;
+    border-radius: 20px;
+    border: 2px solid var(--roxo);
+
+}
+
+
+.img-ultimo{
+    width: 200px;
+    height: 120px;
+    object-fit: contain;
+    object-position: center;
+    scroll-snap-type: x mandatory;
+    scroll-snap-align: center;
+}
+.sec-ultimo{
+   background-color: #F279A6;
+
+}
